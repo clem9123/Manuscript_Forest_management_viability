@@ -1,0 +1,21 @@
+# ignore files
+*.Rproj.user
+*.RData
+*.Rhistory
+*.Ruserdata
+*.Rproj
+
+# Ignore Brouillon folder
+/Brouillon/
+
+# ignore latex building files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
