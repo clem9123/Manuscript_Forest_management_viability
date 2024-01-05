@@ -2,7 +2,7 @@
 
 \input{Latex_theme.tex}
 
-\title{Diversity as a management tool for forest ecosystem \\ 
+\title{Diversity as a management tool for forest ecosystem services \\ 
 \large A theoretical exploration using control theory and viability analyses}
 \author{Clementine de Montgolfier}
 \date{Dec 2023}
@@ -185,5 +185,264 @@ Known limitation of the viability analyses (harware -> perhaps in discussion)
 On a machin RAM, turning for blabla time with , code accessible at github; 
 Everything ran with R 4 and analyses where also done with R. REF
 We got the results :
+
+\section{Results}
+
+\section{Discussion for now random text on reflexion I had and may be incliduded or not}
+
+The limit of this kind of studies is their computational cost, and the need for a simple model, which means a compromise between complexity and realism. Our first hypothesis is that we can use a theoretical model to explore the effect of diversity on ecosystem services, and that the results will be transferable to more complex models.
+
+Landscape diversity
+
+Limit of parametrisation : other possibilities : data/ easy abc, error, sensitivity analysis, and also more generally simplified model truthtfullness
+
+Limit : choice of diversity index, sensibility and Hill number, Gini...
+
+\subsection{Forest diversity, may be more complex than diversity drives diversity}
+
+In forests diversity can be define in different ways : Composition or structural diversity. And at different scale from the stand to the landscape.\\
+Work on composition diversification and its effects is mainly driven by the first work on biodiversity ecosystem functioning (BEF) from grassland studies in the 70's ~\autocite{tilmanBiodiversityPopulationEcosystem1996}.They showed that there was a positive link between biodiversity and ecosystem functioning. But the mechanisms behind this link are still not well understood. Numerous hypothesis were made to explain this link: competitive exclusion, niche complementary, sampling effect, etc. ~\autocite{aliBiodiversityEcosystemFunctioning2023}. This uncertainty makes it difficult to predict the impact of biodiversity loss, and even more in other ecosystems than grasslands.
+While the hypothesis of BEF relationship, and its relevance is still debated, it fuels an entire segment of research.
+The study of BEF in forest is more recent and mainly focused on the link between species diversity and productivity. A positive relattionship has been demonstrated at a global scale ~\autocite{liangPositiveBiodiversityproductivityRelationship2016}, but also in specific forest ~\autocite{morinTreeSpeciesRichness2011,paquetteEffectBiodiversityTree2011,jourdanManagingMixedStands2021}. But as for grassland the mechanisms are not understood and the interaction is not positive in every forest type. ~\autocite{forresterReviewProcessesDiversity2016}.
+However one of the way to explain the contrasting results could be that the biodiversity-productivity interaction is context dependant. The relationship seems to be mostly positive in harsh climate and low tree density but negative in suitable environment ~\autocite{juckerClimateModulatesEffects2016}.
+It is also reductive to consider productivity as the only characteristic of forest ecosystems, and many other should be accounted for : support of habitat and biodiversity, regulation of flood, carbon storage and also cultural and aesthetic values.
+All of them might not be impacted in the same way. For example there doesn't seem to be an effect of mixture on other soil biodiversity ~\autocite{korboulewskyHowTreeDiversity2016}.
+To have a better understanding of the impact of biodiversity on forest functioning it seems necessary to study multiple functions at the same time. It has been shown that diversity can increase multi-functionality by the jack-of-all-trades mechanism ~\autocite{vanderplasJackofalltradesEffectsDrive2016} while not optimizing any of them. This compromise can be seen in the balance between young and old grown forests, if the firsts are more productive, they store less carbon than the last ~\autocite{caspersenSuccessionalDiversityForest2001}. It is thus important to define the functions that we want to preserve as well as threshold for each of them.
+
+Actually species diversity is not the only way to bring back diversity in forest and recently vertical diversity in forest have also been advocated to be a possible solution to the increasing fralgility of this ecosystem ~\autocite{guldinRoleUnevenAgedSilviculture1996}. Today only 25\% of managed forest in europe is composed of uneven aged stand (foresteurope.org), but the actual effect of such management is hardly consensual. In his review in 2017 Nolet ~\autocite{noletComparingEffectsEven2018} concludes that "overall, the complexity	of comparing even- and uneven- aged silviculture may explain the surprisingly limited number of studies that compare ecological effects of even- and uneven- aged silviculture".
+
+\subsection{Management for diversity}
+
+Forest management is inextricably linked to the evolving understanding of ecological dynamics and global shifts. In addressing the question of how to manage diversity in managed forests, several propositions or practice philosophies have been put forth. The first is avoiding clear-cutting which can be done in a number of ways. First retention forestry \autocite{gustafssonRetentionForestryMaintain2012,rosenvaldWhatWhenWhere2008} aims at maintaining the structure and composition of the forest by leaving a certain proportion of trees in the stand after harvesting. This approach is based on the assumption that the forest will regenerate naturally, and that the retained trees will provide a seed source for the next generation, it is also a way to keep a certain diversity on the stand. The second is the choice of an irregular Shelterwood Systems (also called uneven aged forest or continuous cover forestry) \autocite{sinhaOptimalManagementNaturally2017,schallImpactEvenagedUnevenaged2018,nylandEvenUnevenagedChallenges2003,noletComparingEffectsEven2018,dudumanForestManagementPlanning2011} which aims to maintain a continuous cover of trees in the stand, and some vertical diversity. The second thing to rely on mixture of species \autocite{morinTreeSpeciesRichness2011,jourdanManagingMixedStands2021}, while eventually consideration the plantation of tree species resilient to future climate conditions \autocite{websterPromotingMaintainingDiversity2018}.
+
+The complexity of these approaches underscores the need for a comprehensive study of forest management practices to ascertain their effectiveness while mitigating drawbacks.
+
+\clearpage
+
+\printbibliography
+
+\clearpage
+
+% title page : Appendix
+
+\begin{center}
+    \textbf{\Large Appendix}
+\end{center}
+
+\pagenumbering{roman}
+\appendix
+
+\section{Kohyama model parametrisation}
+
+We are starting with a 3 layers 3 species system with a mixture of possible species : \textit{Abies alba}, \textit{Betula pendula}, \textit{Fagus sylvatica}, \textit{Picea abies}, \textit{Pinus sylvestris}, \textit{Quercus pubescens}. The layers are defined by dbh (cm) interval : [0,22.5], [22.5,67.5], [67.5+[. We have to define all parameters in Table \ref{tab:coeftoparam}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l l}
+    \hline
+    \hline
+    \multicolumn{3}{l}{\textbf{By species}, $sp$} \\
+    \hline
+    $b_{sp,1}$     & optimal birth probability                              & $ha^{-1}.year^{-1}$ \\
+    $Cb_{sp,1}$    & birth susceptibility to superior foliage density       & $ha.m^{-2}$       \\
+    $m_{sp}$       & probability of intrinsic mortality                     & $year^{-1}$ \\
+    $Cg_{sp}$      & growth susceptibility to superior foliage density      & $ha.m^{-2}$           \\
+    $Cm_{sp}$      & mortality susceptibility to superior foliage density   & $ha.m^{-2}$           \\    
+    \\
+    \multicolumn{3}{l}{\textbf{By layer $l$}} \\
+    \hline
+    $\phi_{l}$  & mean basal area per tree in layer $l$        & $m^{2}.ha^{-1}$  \\
+    \\
+    \multicolumn{3}{l}{\textbf{By species $sp$ and layer $l$}} \\
+    \hline
+    $g_{sp,l}$     & optimal probability of transition from layer $l$ to the next & $.year^{-1}$ \\
+    \\
+    \hline
+    \hline
+    \end{tabular}
+    \caption{Parameters that we have to define numerically}
+    \label{tab:coeftoparam} 
+\end{table}
+
+\subsection{Parameters deduced form litterature of ForCEEPS and ForClim}
+
+\subsubsection{Basal area}
+
+Basal area is defined as the area of the cross subsection of the tree at breast height (1.3m). It is a good indicator of the density of the forest. It is defined as : 
+
+\begin{equation}
+    \phi_{l} = \frac{\pi}{4} * \overline{D_{l}}^2
+\end{equation}
+
+With $\overline{D_{l}}$ the mean diameter in layer $l$. (i.e. 11.25, 45, 100 cm).\\
+
+\subsubsection{Intrinsec Mortality}
+
+Mortality was defined axactly as in ForCEEPS, as the inverse of the life expectancy of the species ($A_{max}$) multiplied by a factor $c_{mort}$ = 4.605.
+\begin{equation}
+    m_s = \frac{c_{mort}}{A_{max_s}}
+\end{equation}
+
+$A_max$ can be found in the thesis on ForClim \autocite{bugmannEcologyMountainousForests1965} or the supplementary data of ForCEEPS \autocite{morinForestSuccessionGap2021}
+
+\subsubsection{Optimal Growth}
+
+Optimal growth is defined in ForCEEPS \autocite{morinForestSuccessionGap2021} as :
+
+\begin{equation}
+    \Delta D_{\mathrm{opt}_i}(t+1)=g_s \frac{D_i(t)\left(1-\frac{H_i(t)}{H_{\max _s}}\right)}{2 H_{\max _s}-b_{\max _s} \times \exp \left(\left(\frac{-s_s}{b_{\max _s}} D_i(t)\right) \times\left(\frac{-s_s}{b_{\max _s}} D_i(t)+2\right)\right.}
+\end{equation}
+
+With $g_s$ the growth rate, $D_i$ the diameter of the tree, $H_i$ the height of the tree, $H_{\max _s}$ the maximum height of the species, $b_{\max _s}$ the maximum heigth of the species above breast ($b_{\max _s} =  H_{\max _s} - 1.37$), and $s_s$ the shape parameter of the species. $g_s$, $H_{\max _s}$, and $s_s$ can be found in the appendix \autocite{morinForestSuccessionGap2021}. $H_i$ is also defined as a function of $D_i$ :
+
+\begin{equation}
+    H_i(t)=b+b_{\max _s}\left(1-\exp \left(-\frac{s_s}{b_{\max _s}} D_i(t)\right)\right)
+    \label{eq:height}
+\end{equation}
+
+This gives a function $f(D_i) = \Delta D_{\mathrm{opt}_i}(t+1)$, which is the growth of the tree as a function of its diameter.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figure/Growth_diameter.png}
+    \caption{Growth as a function of diameter for the 5 species}
+    \label{fig:growth_diameter}
+\end{figure}
+
+As our model does not account for a change of growth with diameter we took the growth from the mean diameter of our two interval : [0, 22.5] and [22.5, 67.5] (i.e. 11.25 and 45). It gives :
+
+\begin{table}[H]
+\begin{center}
+    \begin{tabular}{lll}
+    \hline
+    Species & Growth 1 & Growth 2 \\ \hline
+    \textit{Abies alba} & 0.5 & 0.96 \\
+    \textit{Betula pendula} & 0.5 & 0 \\
+    \textit{Fagus sylvatica} & 0.37 & 0.71 \\
+    \textit{Picea abies} & 0.5 & 0.9 \\
+    \textit{Pinus sylvestris} & 0.29 & 0.53 \\
+    \textit{Quercus pubescens} & 0.28 & 0.5 \\ \hline
+    \end{tabular}
+    \caption{Growth for the 5 species and two below layers}
+\end{center}
+\end{table}
+
+Growth is the number of cm added to the diameter of the tree each year. To get the transition probability to the next layer with the assumption that tree dbh are uniformly distributed in each layer we need to divide this value by the diameter difference of the layer (See Tab. \ref{tab:final_param}).
+
+\subsubsection{Optimal Esthablishment}
+
+Establishment is a process that is still not well understood. In ForCEEPS optimal establishment (if all the threshold for establishment are met) is the same for every species : 0.006 individu/m2/year. We will use this value for our model for every species.
+
+\subsubsection {Light competition}
+
+Proportionality between the species is known (see ForClim Ly (growth) and La(birth)), as mortality due to light competition is due to the absence of growth we used the same proportionality between species.
+
+\begin{table}[H]
+\begin{center}
+    \begin{tabular}{lll}
+    \hline
+    Species & Ly (growth, mortality) & La (birth) \\ \hline
+    \textit{Abies alba} & 0.05 & 1 \\
+    \textit{Betula pendula} & 0.3 & 9 \\
+    \textit{Fagus sylvatica} & 0.05 & 1 \\
+    \textit{Picea abies} & 0.1 & 5 \\
+    \textit{Pinus sylvestris} & 0.3 & 9 \\
+    \textit{Quercus pubescens} & 0.3 & 7 \\ \hline
+    \end{tabular}
+    \caption{Sensitivity for light competition}
+    \label{tab:prop_sensitivity}
+\end{center}
+\end{table}
+
+If we have a relative sensitivy of our species to light availability we still have to get the global coefficient linked to this sensitivity for growth, birth and mortality. We cannot extract the parameters from a simplification as we used a negative linear function, which is not the case in ForCEEPS. We will use the data from ForCEEPS to fit our parameters.
+
+\subsection{ForCEEPS input data and results}
+
+ForCEEPS simulations where used to adjust the dynamic of the system. 6 species where chosen to do so : \textit{Abies alba}, \textit{Betula pendula}, \textit{Fagus sylvatica}, \textit{Picea abies}, \textit{Pinus sylvestris}. We chose a constant climate for 300 years drawn randomly from meteorologic data from Bern between 1950 and 2000 (resulting climate can be found in Fig. \ref{fig:climate}). We used the same initial forest structure for all simulations : 10 trees per species per layer. We did 20 simulations of 1000m2 patch for each species association. We then took the mean of the 20 simulations and multiplied it by 10 to get the number of trees per hectare. We then fitted the parameters of the model to get the same dynamic as the ForCEEPS simulations.
+
+\subsubsection{Climate}
+
+Climate was taken randomly for each months in the climate data from 1950 to 2000 (Bern), to get a constant climate. To be sure to have non limiting precipitation they were all multiplied bya factor 10.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Figure/Climate_simul.png}
+    \caption{Climate for our ForCEEPS simulation}
+    \label{fig:climate}
+\end{figure}
+
+\subsubsection{setup parameters}
+
+For the setup parameters we used non limiting values for water and nitrogen. The parameters can be found in the github documents (file Basic.setup), and are the same for all simulations.
+
+Result of the simulation are in color in Fig. \ref{fig:Simulation_fit}.
+
+\subsubsection{Fitting the parameters}
+
+To fit the parameter we used the function optim in R with the following parameters :
+
+\begin{tcolorbox}
+result <- optimParallel(start point, function to minimize, lower = rep(0,3), upper = rep(0.1,3), method = ''L-BFGS-B'')
+\end{tcolorbox}
+
+Method "L-BFGS-B" (see optim documentation ~\url{https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim}) allows box constraints, that is each variable can be given a lower and/or upper bound. The initial value must satisfy the constraints. This uses a limited-memory modification of the BFGS quasi-Newton method.  "BFGS" is a quasi-Newton method (also known as a variable metric algorithm), specifically that published simultaneously in 1970 by Broyden, Fletcher, Goldfarb and Shanno. This uses function values and gradients to build up a picture of the surface to be optimized.
+
+I only fit three non specific parameters LCg (light competition for growth), LCm (light competition for mortality) and LCb (light competition for birth). In the model they are then multiplied by the sensitivity of the species to light competition (see Tab. \ref{tab:prop_sensitivity}).
+
+\subsubsection{Results}
+
+% figure sur toute une page dans le sens de la longueur (landscape)
+\begin{sidewaysfigure}[ht]
+    \includegraphics[width=\textwidth]{Figure/Simulation_fit.png}
+    \caption{Fit Kohyama model (color) on ForCEEPS simulation (black) for individual species}
+    \label{fig:Simulation_fit}
+\end{sidewaysfigure}
+
+\begin{table}[H]
+\begin{center}
+    \begin{tabular}{llllllll}
+    \hline
+    Species & b (/ha/an) & m (/year) & g1 (/year) & g2 (/year) & LCb & LCm & LCg \\ \hline
+    \textit{Abies alba}       & 60 & 0.013 & 0.022 & 0.021 & 0.0059 & 0.0046 & 0.0059 \\
+    \textit{Betula pendula}   & 60 & 0.031 & 0.022 & 0     & 0.0295 & 0.0229 & 0.0295 \\
+    \textit{Fagus sylvatica}  & 60 & 0.012 & 0.016 & 0.016 & 0.0531 & 0.0413 & 0.0531 \\
+    \textit{Picea abies}      & 60 & 0.015 & 0.022 & 0.02  & 0.0531 & 0.0413 & 0.0531 \\
+    \textit{Pinus sylvestris} & 60 & 0.023 & 0.013 & 0.012 & 0.0059 & 0.0046 & 0.0059 \\
+    \textit{Quercus pubescens}& 60 & 0.008 & 0.012 & 0.011 & 0.0413 & 0.0321 & 0.0413 \\ \hline
+    \end{tabular}
+    \caption{Parameters found for the 5 species}
+    \label{tab:Final_param}
+\end{center}
+\end{table}
+
+\subsection{Volume allometry}
+
+Volume was calculated with the formula from \autocite{deleuzeEstimerVolumeTotal2014} :
+
+\begin{equation}
+    \text { VolTot }=\frac{h_{\text {tot }} \cdot c_{130}{ }^2}{4 \pi\left(1-\frac{1.3}{h_{\text {tot }}}\right)^2}\left(a+b \cdot \frac{\sqrt{c_{130}}}{h_{\text {tot }}}+c \cdot \frac{h_{\text {tot }}}{c_{130}}\right)
+\end{equation}
+
+With $h_{tot}$ the total height of the tree, $c_{130}$ the diameter at 130cm, and $a$, $b$, and $c$ the coefficients for each species. The coefficients can be found in \autocite{deleuzeEstimerVolumeTotal2014}. $h_tot$ was defined as a function of $c_{130}$ like in equation \ref{eq:height}. 
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lccc}
+    \hline
+    \hline
+    \textbf{Species} & \textbf{Volume layer 1} & \textbf{Volume layer 2} & \textbf{Volume layer 3} \\
+    \hline
+    \textit{Abies alba} & 0.007624415 & 0.2518305 & 1.724068 \\
+    \textit{Picea abies} & 0.009195898 & 0.2779880 & 1.697751 \\
+    \textit{Pinus sylvestris} & 0.005440307 & 0.1669922 & 1.134001 \\
+    \textit{Betula pendula} & 0.004805793 & 0.1585726 & 0.947111 \\
+    \textit{Fagus sylvatica} & 0.005384323 & 0.2140528 & 1.681878 \\
+    \textit{Quercus pubescens} & 0.004872535 & 0.1729537 & 1.281115 \\
+    \hline
+    \hline
+    \end{tabular}
+    \caption{Volume of the 6 species in the 3 layers (m3/tree)}
+    \label{tab:volume}
+\end{table}
 
 \end{document}
